@@ -23,7 +23,7 @@
             text-shadow: 0 0 10px #3b82f6 0 0 10px #3b82f6;
         }
 
-        
+
         .custom-tab {
             background: transparent !important;
             border: none !important;
@@ -32,7 +32,7 @@
             transition: color 0.2s ease;
         }
 
-        
+
         .custom-tab.active::after {
             content: "";
             position: absolute;
@@ -40,11 +40,11 @@
             left: 0;
             width: 100%;
             height: 3px;
-            
+
             border-radius: 2px;
         }
 
-       
+
         .custom-tab.active.tab-red {
             color: #dc3545 !important;
             /* Красный текст */
@@ -52,18 +52,18 @@
 
         .custom-tab.active.tab-red::after {
             background-color: #dc3545;
-            
+
         }
 
-        
+
         .custom-tab.active.tab-green {
             color: #00cd00 !important;
-           
+
         }
 
         .custom-tab.active.tab-green::after {
             background-color: #00cd00;
-            
+
         }
     </style>
 </head>
@@ -129,34 +129,47 @@
                 tab.addEventListener('click', function(e) {
                     e.preventDefault();
 
-                    
+
                     tabLinks.forEach(t => {
                         t.classList.remove('active', 'tab-red', 'tab-green');
                         t.classList.add('text-muted');
                     });
 
-                    
+
                     this.classList.remove('text-muted');
                     this.classList.add('active');
 
-                    
+
                     if (this.id === 'tabAgza') {
-                        
+
                         this.classList.add('tab-green');
                         iki.classList.remove('d-none')
 
-                        if (confirmBlock) confirmBlock.classList.remove('d-none'); 
+                        if (confirmBlock) confirmBlock.classList.remove('d-none');
                         submitBtn.textContent = 'Agza bolmak';
                     } else {
-                        
+
                         this.classList.add('tab-red');
                         iki.classList.add('d-none')
 
-                        if (confirmBlock) confirmBlock.classList.add('d-none'); 
+                        if (confirmBlock) confirmBlock.classList.add('d-none');
                         submitBtn.textContent = 'Girmek';
                     }
                 });
             });
         });
     </script>
+    @if(session('openLoginModal'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modalElement = document.getElementById('loginModal');
+            if (modalElement) {
+                var loginModal = new bootstrap.Modal(modalElement);
+                loginModal.show();
+            } else {
+                console.error('Modal element #loginModal not found!');
+            }
+        });
+    </script>
+    @endif
 </body>

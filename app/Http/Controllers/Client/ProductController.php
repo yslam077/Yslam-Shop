@@ -20,4 +20,17 @@ class ProductController extends Controller
         $categories=Category::all();
         return view('client.products.show', compact('product','categories'));
     }
+    public function search(Request $request)
+    {
+        $categories=Category::all();
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->latest()
+            ->paginate(12)
+            ->appends(['query' => $query]);
+
+        return view('client.products.search', compact('products', 'query','categories'));
+    }
 }

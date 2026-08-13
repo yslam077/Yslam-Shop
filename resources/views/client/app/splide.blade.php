@@ -1,12 +1,12 @@
-<div data-aos="fade-down" data-aos-delay="160" data-aos-once="true">
+<div>
     <div class="container-xxl rounded-5 mt-4">
         <section id="banner" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
 
-                    <!-- 1. СЛАЙД: Çagalar üçin (Детские товары) -->
+                    
                     <li class="splide__slide">
-                        {{-- Замени ID 1 на ID категории "Çagalar üçin" из БД --}}
+                        
                         <a href="{{ route('categories.show', 1) }}" class="text-decoration-none d-block">
                             <div class="d-flex align-items-center w-100 rounded-5" style="background-color: #FBFBFC;">
                                 <div class="col-7">
@@ -33,9 +33,9 @@
                         </a>
                     </li>
 
-                    <!-- 2. СЛАЙД: Saglyk we Gözelik (Красота и здоровье) -->
+                    
                     <li class="splide__slide">
-                        {{-- Замени ID 2 на ID категории "Saglyk we Gözelik" из БД --}}
+                        
                         <a href="{{ route('categories.show', 2) }}" class="text-decoration-none d-block">
                             <div class="d-flex align-items-center w-100 rounded-5" style="background-color: #FBFBFC;">
                                 <div class="col-7">
@@ -62,9 +62,9 @@
                         </a>
                     </li>
 
-                    <!-- 3. СЛАЙД: Öý hojalyk (Товары для дома) -->
+                   
                     <li class="splide__slide">
-                        {{-- Замени ID 3 на ID категории "Öý hojalyk" из БД --}}
+                       
                         <a href="{{ route('categories.show', 3) }}" class="text-decoration-none d-block">
                             <div class="d-flex align-items-center w-100 rounded-5" style="background-color: #E3F2D1;">
                                 <div class="col-7">
@@ -91,9 +91,9 @@
                         </a>
                     </li>
 
-                    <!-- 4. СЛАЙД: Sport harytlary (Спорттовары) -->
+                   
                     <li class="splide__slide">
-                        {{-- Замени ID 4 на ID категории "Sport harytlary" из БД --}}
+                        
                         <a href="{{ route('categories.show', 4) }}" class="text-decoration-none d-block">
                             <div class="d-flex align-items-center w-100 rounded-5" style="background-color: #000000;">
                                 <div class="col-7">

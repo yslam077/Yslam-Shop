@@ -1,7 +1,7 @@
 @extends('client.layouts.header')
 @section('content')
 @include('client.app.splide')
-<div data-aos="fade-down" data-aos-delay="200">
+<div >
     <div class="container-lg my-5">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
@@ -229,5 +229,4 @@
     </div>
 </div>
 @include('client.app.modal')
-@include('client.app.offcanvas')
 @endsection
