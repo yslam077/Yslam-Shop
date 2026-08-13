@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.orders.index') }}" class="nav-link">
                                 <i class="bi bi-cart-check me-2"></i> Sargytlar (Заказы)
                             </a>
                         </li>

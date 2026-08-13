@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-lg py-4">
-    
+
     <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
         <div>
             <h1 class="fw-bold text-primary display-6 mb-1">{{ $category->name }}</h1>
@@ -43,37 +43,41 @@
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <span class="fw-bold text-primary h5 mb-0">{{ number_format($product->price, 0, ',', ' ') }} TMT</span>
                         </div>
-                        
+
                         <div class="d-grid gap-2">
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">
                                 Görmek
                             </a>
 
-                            
-                            @if(session()->has('cart.'.$product->id))
-                                <div class="d-flex gap-1">
-                                    
-                                    <button class="btn btn-success btn-sm rounded-3 w-100 fw-bold disabled">
-                                        <i class="bi bi-check-circle-fill me-1"></i> Sebede goşuldy
-                                    </button>
+                            @php
+                            $cart = session('cart', []);
+                            $inCart = isset($cart[$product->id]) && (
+                            (is_array($cart[$product->id]) && ($cart[$product->id]['quantity'] ?? 0) > 0) ||
+                            (!is_array($cart[$product->id]) && (int)$cart[$product->id] > 0)
+                            );
+                            @endphp
 
-                                
-                                    <form action="{{ route('cart.remove', $product->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-3" title="Sebetden poz">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            @else
-                                
-                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                            @if($inCart)
+                            <div class="d-flex gap-1">
+                                <button class="btn btn-success btn-sm rounded-3 w-100 fw-bold disabled">
+                                    <i class="bi bi-check-circle-fill me-1"></i> Sebede goşuldy
+                                </button>
+
+                                <form action="{{ route('cart.remove', $product->id) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary btn-sm rounded-3 w-100 fw-bold">
-                                        <i class="bi bi-cart-plus me-1"></i> Sebede goş
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm rounded-3" title="Sebetden poz">
+                                        <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </form>
+                            </div>
+                            @else
+                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary btn-sm rounded-3 w-100 fw-bold">
+                                    <i class="bi bi-cart-plus me-1"></i> Sebede goş
+                                </button>
+                            </form>
                             @endif
                         </div>
                     </div>

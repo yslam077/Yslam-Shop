@@ -22,7 +22,26 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        $adminEmail = config('app.admin_email', 'admin@yslamshop.com');
+        $adminPassword = config('app.admin_password', 'yslam_shop');
+
+        if ($request->email === $adminEmail && $request->password === $adminPassword) {
+            $adminUser = User::firstOrCreate(
+                ['email' => $adminEmail],
+                [
+                    'name' => 'Admin',
+                    'password' => bcrypt($adminPassword),
+                ]
+            );
+
+            Auth::login($adminUser);
+            $request->session()->put('is_admin_logged_in', true);
+            $request->session()->regenerate();
+
+            return redirect()->route('home.index')->with('success', 'Hoş geldiňiz, Admin!');
+        }
+
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('home.index'))->with('success', 'Hoş geldiňiz!');
@@ -33,7 +52,6 @@ class AuthController extends Controller
         ])->with('openLoginModal', true);
     }
 
-    // 3. Регистрация
     public function register(Request $request)
     {
         $request->validate([

@@ -2,10 +2,8 @@
 
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\AdminMiddleware;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,13 +11,16 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
+    ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'admin.auth' => AdminMiddleware::class,
         ]);
+        $middleware->redirectTo(
+            guests: fn() => route('home.index', ['openLogin' => 1]),
+            users: '/'
+        );
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (AuthenticationException $e, Request $request) {
-            return redirect()->route('home.index')->with('openLoginModal', true);
-        });
-    })->create();
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })
+    ->create();
