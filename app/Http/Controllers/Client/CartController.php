@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // AJAX добавление/изменение из show.blade.php
+   
     public function addAjax(Request $request, $id)
     {
         $id = (int) $id;

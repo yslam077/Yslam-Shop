@@ -10,21 +10,18 @@ use Illuminate\Support\Facades\Storage; // <-- Добавлен импорт ф�
 
 class AdminProductController extends Controller
 {
-    // Просмотр всех товаров
     public function index()
     {
         $products = Product::with('category')->latest()->paginate(15);
         return view('admin.products.index', compact('products'));
     }
 
-    // Форма создания товара
     public function create()
     {
         $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
 
-    // Сохранение нового товара
     public function store(Request $request)
     {
         $request->validate([
@@ -38,7 +35,7 @@ class AdminProductController extends Controller
         $data = $request->only(['name', 'category_id', 'price', 'description']);
 
         if ($request->hasFile('image')) {
-            // Сохраняем файл в storage/app/public/products
+     
             $path = $request->file('image')->store('products', 'public');
             $data['image'] = $path;
         }
@@ -48,7 +45,6 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Haryt üstünlikli goşuldy!');
     }
 
-    // Форма редактирования товара
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -56,7 +52,6 @@ class AdminProductController extends Controller
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    // Обновление существующего товара
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -72,12 +67,12 @@ class AdminProductController extends Controller
         $data = $request->only(['name', 'category_id', 'price', 'description']);
 
         if ($request->hasFile('image')) {
-            // Удаляем старое фото из storage, если оно существовало
+            
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
 
-            // Загружаем новое фото
+           
             $path = $request->file('image')->store('products', 'public');
             $data['image'] = $path;
         }
@@ -87,12 +82,11 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Haryt üstünlikli täzelendi!');
     }
 
-    // Удаление товара
+    
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
 
-        // Удаляем фото из storage
         if ($product->image && Storage::disk('public')->exists($product->image)) {
             Storage::disk('public')->delete($product->image);
         }

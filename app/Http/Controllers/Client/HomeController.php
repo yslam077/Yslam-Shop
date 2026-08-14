@@ -9,20 +9,22 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-   public function index(Request $request)
+    public function index(Request $request)
     {
-        $categories=Category::all();
+        $categories = Category::all();
         $latestProducts = Product::latest()->take(8)->get();
-        return view('client.home.index',compact('categories','latestProducts'));
+        return view('client.home.index', compact('categories', 'latestProducts'));
     }
     public function locale($locale)
     {
-        $locale = in_array($locale, ['tm', 'ru']) ? $locale : 'en';
-        session()->put('locale', $locale);
+        if ($locale === 'tm') {
+            $locale = 'tk';
+        }
+
+        if (in_array($locale, ['tk', 'ru', 'en'])) {
+            session()->put('locale', $locale);
+        }
 
         return redirect()->back();
-    } 
+    }
 }
-
-
-

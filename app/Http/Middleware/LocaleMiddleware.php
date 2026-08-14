@@ -8,18 +8,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LocaleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('locale') and in_array(session('locale'), ['tm', 'ru', 'en'])) {
-            app()->setLocale(session('locale'));
-        } else {
-            app()->setLocale(env('APP_LOCALE', 'en'));
+        $locale = session('locale', config('app.locale', 'tk'));
+
+        if ($locale === 'tm') {
+            $locale = 'tk';
         }
+
+        if (in_array($locale, ['tk', 'ru', 'en'])) {
+            app()->setLocale($locale);
+        } else {
+            app()->setLocale('tk');
+        }
+
         return $next($request);
     }
 }

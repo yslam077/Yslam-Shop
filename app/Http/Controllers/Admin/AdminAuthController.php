@@ -21,7 +21,6 @@ class AdminAuthController extends Controller
 
         if ($request->email === $adminEmail && $request->password === $adminPassword) {
             
-            // Находим или создаем админа в таблице users, чтобы Auth::check() работал с middleware(['auth'])
             $adminUser = User::firstOrCreate(
                 ['email' => $adminEmail],
                 [
@@ -37,7 +36,6 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard')->with('success', 'Hoş geldiňiz, Admin!');
         }
 
-        // 2. Если вход через обычную базу данных
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -47,7 +45,6 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        // 3. Если данные не совпали — возвращаем ошибку и снова открываем модалку
         return redirect()->back()->withErrors([
             'email' => 'E-mail ýalňyş ýa-da parol näsaz!'
         ])->with('openLoginModal', true);

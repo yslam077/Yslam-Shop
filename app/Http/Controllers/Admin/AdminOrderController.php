@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
-    // Список всех заказов
+    
     public function index()
     {
 
