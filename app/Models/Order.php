@@ -8,18 +8,19 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'items',
         'phone',
         'address',
         'total_price',
         'status',
     ];
 
-    // Автоматически преобразует JSON из БД в PHP-массив
-    protected $casts = [
-        'items' => 'array',
-    ];
+    // Связь с таблицей items (OrderItem)
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
+    }
 
+    // Связь с пользователем
     public function user()
     {
         return $this->belongsTo(User::class);

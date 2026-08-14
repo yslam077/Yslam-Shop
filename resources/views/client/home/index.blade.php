@@ -6,12 +6,12 @@
         <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
                 <h3 class="fw-bold text-dark mb-1">
-                    <i class="bi bi-stars text-warning me-2"></i>Täze gelen harytlar
+                    <i class="bi bi-stars text-warning me-2"></i>{{ __('app.news') }}
                 </h3>
-                <p class="text-muted small m-0">Iň soňky goşulan täze harytlar bilen tanyş babyň</p>
+                <p class="text-muted small m-0">{{__('app.news1') }}</p>
             </div>
             <a href="{{ route('products.index') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
-                Ählisini gör <i class="bi bi-arrow-right ms-1"></i>
+                {{ __('app.view_all') }} <i class="bi bi-arrow-right ms-1"></i>
             </a>
         </div>
         <div class="row g-4">
@@ -21,7 +21,7 @@
 
                     
                     <span class="position-absolute top-0 start-0 badge bg-danger m-3 px-2 py-1 rounded-pill z-1">
-                        <i class="bi bi-lightning-fill me-1"></i>Täze
+                        <i class="bi bi-lightning-fill me-1"></i>{{ __('app.news') }}
                     </span>
 
                     

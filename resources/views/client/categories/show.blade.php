@@ -6,10 +6,10 @@
     <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
         <div>
             <h1 class="fw-bold text-primary display-6 mb-1">{{ $category->name }}</h1>
-            <p class="text-muted m-0">Найдено товаров: {{ $category->products->count() }}</p>
+            <p class="text-muted m-0">{{ __('app.found') }}:{{ $category->products->count() }}</p>
         </div>
         <a href="{{ route('home.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-            <i class="bi bi-arrow-left me-1"></i> {{ __('Baş sahypa') }}
+            <i class="bi bi-arrow-left me-1"></i> {{ __('app.home') }}
         </a>
     </div>
 
@@ -46,7 +46,7 @@
 
                         <div class="d-grid gap-2">
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">
-                                Görmek
+                                {{ __('app.view') }}
                             </a>
 
                             @php
@@ -75,7 +75,7 @@
                             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary btn-sm rounded-3 w-100 fw-bold">
-                                    <i class="bi bi-cart-plus me-1"></i> Sebede goş
+                                    <i class="bi bi-cart-plus me-1"></i>{{ __('app.add') }}
                                 </button>
                             </form>
                             @endif

@@ -9,7 +9,7 @@
             <p class="text-muted m-0">Jemi haryt sany: {{ $products->total() }}</p>
         </div>
         <a href="{{ route('home.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-            <i class="bi bi-arrow-left me-1"></i> {{ __('Baş sahypa') }}
+            <i class="bi bi-arrow-left me-1"></i> {{ __('app.home') }}
         </a>
     </div>
 
