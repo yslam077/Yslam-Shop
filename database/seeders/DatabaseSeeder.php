@@ -3,28 +3,26 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::create([
-            'name'     => 'Admin',
-            'email'    => 'yslam_shop_admin@gmail.com',
-            'password' => bcrypt('12345678'),
-            'is_admin' => true,
-        ]);
+        User::updateOrCreate(
+            ['email' => env('ADMIN_EMAIL', 'yslam_shop_admin@gmail.com')],
+            [
+                'name'     => env('ADMIN_NAME', 'Admin'),
+                'password' => Hash::make(env('ADMIN_PASSWORD', 'default_password')),
+                'is_admin' => true,
+            ]
+        );
 
         $cat1 = Category::create([
             'name_tk' => 'Saglyk we Gözellik',

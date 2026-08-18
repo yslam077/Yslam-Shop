@@ -1,0 +1,9 @@
+
+firstOrFail()
+Egerde birnji bazy danany tapmasa sonra suny gorkezyar 404 Not Found ýalňyşlygyny gorkezyar.
+
+bcrypt()
+Parollary howpsuz şifrelemek (heşlemek) üçin ulanylýan funksiýa.
+
+Route::prefix()
+Marşrutlara umumy URL prefiksini (mysal üçin: /admin) bermek üçin ulanylýar.

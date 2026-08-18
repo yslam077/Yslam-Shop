@@ -14,4 +14,8 @@ return [
     'view'=>'View',
     'add'=>'Add product',
     'found'=>'Product found',
+    'cat1'=>'Home Goods',
+    'cat2'=>"Healt and Beauty",
+    'cat3'=>'Sports',
+    'cat4'=>'For Kids',
 ];

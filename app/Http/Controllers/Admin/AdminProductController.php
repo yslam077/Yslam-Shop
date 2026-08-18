@@ -61,7 +61,7 @@ class AdminProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2500',
         ]);
 
         $data = $request->only(['name', 'category_id', 'price', 'description']);

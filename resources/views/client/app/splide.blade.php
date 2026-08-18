@@ -12,7 +12,7 @@
                                 <div class="col-7">
                                     <div class="w-auto d-inline-block px-3 fw-bold h5 py-1 rounded-pill text-light mb-3 ms-5"
                                         style="background-color: #1a80da;">
-                                        Saglyk we Gözelik
+                                        {{ __('app.cat2') }}
                                     </div>
                                     <div class="text-dark fw-bold display-5 mb-4 ms-5">Iň gowsy siziň<br>Saglygyňyz üçin</div>
                                     <div class="mt-2 h5 fw-bold mb-4 ms-5" style="color: #004a8a;">
@@ -21,7 +21,7 @@
                                     <div class="d-flex mb-3 ms-5">
                                         <div>
                                             <span class="btn text-light px-4 fw-bolder py-2" style="background-color: #1a80da;">
-                                                Göz aýlamak <i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
+                                                {{__('app.view') }}<i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                 <div class="col-7">
                                     <div class="w-auto d-inline-block px-3 fw-bold h5 py-1 rounded-pill text-light mb-3 ms-5"
                                         style="background-color: #ff799daf;">
-                                        <i class="bi bi-heart-fill me-2" style="color: #ff5e84;"></i>Çagalar üçin
+                                        <i class="bi bi-heart-fill me-2" style="color: #ff5e84;"></i>{{__('app.cat4') }}
                                     </div>
                                     <div class="text-dark fw-bold display-5 mb-4 ms-5">Iň gowsy siziň<br> çagalaryňyz üçin</div>
                                     <div class="mt-2 h5 fw-bold mb-4 ms-5" style="color: #F37E9A;">
@@ -50,7 +50,7 @@
                                     <div class="d-flex mb-3 ms-5">
                                         <div>
                                             <span class="btn text-light px-4 fw-bolder py-2" style="background-color: #F37E9A;">
-                                                Göz aýlamak <i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
+                                                {{ __('app.view') }}<i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                 <div class="col-7">
                                     <div class="w-auto d-inline-block px-3 fw-bold h5 py-1 rounded-pill text-light mb-3 ms-5"
                                         style="background-color: #ACC47A;">
-                                        <i class="bi bi-house-fill me-2" style="color: #E3F2D1;"></i>Öý hojalyk
+                                        <i class="bi bi-house-fill me-2" style="color: #E3F2D1;"></i>{{ __('app.cat1') }}
                                     </div>
                                     <div class="text-dark fw-bold display-5 mb-4 ms-5">Rahatlyk we Komfort<br>siziň öýüňizde</div>
                                     <div class="mt-2 h5 fw-bold mb-4 ms-5" style="color: #ACC47A;">
@@ -79,7 +79,7 @@
                                     <div class="d-flex mb-3 ms-5">
                                         <div>
                                             <span class="btn text-light px-4 fw-bolder py-2" style="background-color: #ACC47A;">
-                                                Göz aýlamak <i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
+                                                {{ __('app.view') }}<i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                                 <div class="col-7">
                                     <div class="w-auto d-inline-block px-3 fw-bold h5 py-1 rounded-pill text-light mb-3 ms-5"
                                         style="background-color: #ff9100;">
-                                        Sport harytlary
+                                        {{ __('app.cat3') }}
                                     </div>
                                     <div class="text-light fw-bold display-5 mb-4 ms-5">Sport harytlar<br>siziň üçin</div>
                                     <div class="mt-2 h5 fw-bold mb-4 ms-5" style="color: #ff9100;">
@@ -108,7 +108,7 @@
                                     <div class="d-flex mb-3 ms-5">
                                         <div>
                                             <span class="btn text-light px-4 fw-bolder py-2" style="background-color: #ff9100;">
-                                                Göz aýlamak <i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
+                                                {{ __('app.view') }}<i class="bi bi-arrow-right-circle-fill h6 ms-1"></i>
                                             </span>
                                         </div>
                                     </div>

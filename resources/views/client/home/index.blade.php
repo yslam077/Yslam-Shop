@@ -55,7 +55,7 @@
 
                             <div class="d-grid gap-2">
                                 <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">
-                                    Görmek
+                                    {{ __('app.view') }}
                                 </a>
 
                                 
@@ -104,7 +104,7 @@
                                 alt="Saglyk we gözelik" class="w-100 rounded-circle object-fit-cover" style="aspect-ratio: 1/1;">
                         </div>
                         <div class="col-8 ps-3">
-                            <div class="text-dark fw-bolder h6 mb-1">Saglyk we gözelik</div>
+                            <div class="text-dark fw-bolder h6 mb-1">{{ __('app.cat2') }}</div>
                             <div class="text-secondary small fw-semibold">
                                 Saglyk we gözelik harytlary<br>
                                 <i class="bi bi-arrow-right text-primary"></i>
@@ -122,7 +122,7 @@
                                 alt="Çagalar üçin" class="w-100 rounded-circle object-fit-cover" style="aspect-ratio: 1/1;">
                         </div>
                         <div class="col-8 ps-3">
-                            <div class="text-dark fw-bolder h6 mb-1">Çagalar üçin</div>
+                            <div class="text-dark fw-bolder h6 mb-1">{{ __('app.cat4') }}</div>
                             <div class="text-secondary small fw-semibold">
                                 Çagalaryňyzyň sagdyn ösmegi<br>
                                 <i class="bi bi-arrow-right text-primary"></i>
@@ -141,7 +141,7 @@
                                 alt="Öý hojalyk" class="w-100 rounded-circle object-fit-cover" style="aspect-ratio: 1/1;">
                         </div>
                         <div class="col-8 ps-3">
-                            <div class="text-dark fw-bolder h6 mb-1">Öý hojalyk</div>
+                            <div class="text-dark fw-bolder h6 mb-1">{{ __('app.cat1') }}</div>
                             <div class="text-secondary small fw-semibold">
                                 Rahatlyk siziň öýüňizde<br>
                                 <i class="bi bi-arrow-right text-primary"></i>
@@ -160,7 +160,7 @@
                                 alt="Sport harytlar" class="w-100 rounded-circle object-fit-cover" style="aspect-ratio: 1/1;">
                         </div>
                         <div class="col-8 ps-3">
-                            <div class="text-dark fw-bolder h6 mb-1">Sport harytlar</div>
+                            <div class="text-dark fw-bolder h6 mb-1">{{ __('app.cat2') }}</div>
                             <div class="text-secondary small fw-semibold">
                                 Jan saglygym baş baýlygym<br>
                                 <i class="bi bi-arrow-right text-primary"></i>
