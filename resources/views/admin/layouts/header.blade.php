@@ -17,7 +17,8 @@
             background-color: #212529;
         }
 
-        .sidebar .nav-link {
+        .sidebar .nav-link,
+        .offcanvas .nav-link {
             color: rgba(255, 255, 255, .75);
             font-weight: 600;
             padding: 12px 20px;
@@ -26,7 +27,9 @@
         }
 
         .sidebar .nav-link:hover,
-        .sidebar .nav-link.active {
+        .sidebar .nav-link.active,
+        .offcanvas .nav-link:hover,
+        .offcanvas .nav-link.active {
             color: #fff;
             background-color: #0d6efd;
         }
@@ -35,20 +38,61 @@
 
 <body>
 
+    <header class="navbar navbar-dark bg-dark d-md-none p-3 shadow-sm">
+        <div class="container-fluid">
+            <a href="{{ route('admin.dashboard') }}" class="navbar-brand fw-bold text-danger mb-0">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebarMobile">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </header>
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="adminSidebarMobile">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-danger fw-bold">Admin Panel</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between p-3">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.products.index') }}" class="nav-link">
+                        <i class="bi bi-box-seam me-2"></i> Harytlar (Товары)
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link">
+                        <i class="bi bi-cart-check me-2"></i> Sargytlar (Заказы)
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="bi bi-people me-2"></i> Ulanyjylar (Пользователи)
+                    </a>
+                </li>
+            </ul>
+            <div>
+                <hr class="text-secondary">
+                <a href="{{ route('home.index') }}" class="text-decoration-none">
+                    <button type="button" class="btn btn-outline-danger w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-box-arrow-right"></i> Çykmak
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row">
-
-
-            <aside class="col-md-3 col-lg-2 p-3 sidebar d-flex flex-column justify-content-between">
+            <aside class="col-md-3 col-lg-2 p-3 sidebar d-none d-md-flex flex-column justify-content-between">
                 <div>
-
                     <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center mb-4 text-white text-decoration-none px-2">
                         <span class="fs-4 fw-bold text-danger">Admin Panel</span>
                     </a>
-
                     <hr class="text-secondary">
-
-
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -81,12 +125,14 @@
                     </a>
                 </div>
             </aside>
-            <main class="col-md-9 col-lg-10 p-4">
+
+            <main class="col-md-9 col-lg-10 p-3 p-md-4">
                 @yield('content')
             </main>
-
         </div>
     </div>
+
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

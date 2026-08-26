@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => env('ADMIN_EMAIL', 'yslam_shop_admin@gmail.com')],
             [
-                'name'     => env('ADMIN_NAME', 'Admin'),
-                'password' => Hash::make(env('ADMIN_PASSWORD', 'default_password')),
+                'name'=> env('ADMIN_NAME', 'Admin'),
+                'password' => Hash::make('yslam_shop_admin'),
                 'is_admin' => true,
             ]
         );

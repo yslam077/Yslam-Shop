@@ -16,9 +16,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->has('is_admin_logged_in')){
+        // Проверяем: 
+        // 1. Авторизован ли пользователь в базе (Auth::check())
+        // 2. Является ли он админом согласно колонке is_admin в БД
+        if (!Auth::check() || !Auth::user()->is_admin) {
             return redirect()->route('home.index')->with('error', 'Доступ ограничен!');
         }
+
         return $next($request);
     }
 }

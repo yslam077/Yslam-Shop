@@ -98,8 +98,6 @@
         const submitBtn = document.getElementById('submitBtn');
 
         if (tabGirmek && tabAgza) {
-
-            // Режим "Girmek" -> КРАСНЫЙ
             tabGirmek.addEventListener('click', function(e) {
                 e.preventDefault();
                 tabGirmek.classList.add('active', 'tab-danger');
@@ -115,14 +113,12 @@
                 confirmPasswordInput.removeAttribute('required');
 
                 submitBtn.textContent = "Girmek";
-                
                 submitBtn.classList.remove('btn-success');
                 submitBtn.classList.add('btn-danger');
 
                 authForm.action = "{{ route('login.post') }}";
             });
 
-            // Режим "Agza bolmak" -> ЗЕЛЕНЫЙ
             tabAgza.addEventListener('click', function(e) {
                 e.preventDefault();
                 tabAgza.classList.add('active', 'tab-success');
@@ -138,8 +134,6 @@
                 confirmPasswordInput.setAttribute('required', 'required');
 
                 submitBtn.textContent = "Agza bolmak";
-
-                // Переключение кнопки на зеленую
                 submitBtn.classList.remove('btn-danger');
                 submitBtn.classList.add('btn-success');
 
@@ -147,22 +141,30 @@
             });
         }
 
-        function setupTogglePassword(iconId, inputId) {
+        // Рабочая функция переключения видимости пароля
+        function bindToggle(iconId, inputId) {
             const icon = document.getElementById(iconId);
             const input = document.getElementById(inputId);
 
             if (icon && input) {
-                icon.addEventListener('click', function() {
-                    const isPassword = input.getAttribute('type') === 'password';
-                    input.setAttribute('type', isPassword ? 'text' : 'password');
-                    icon.classList.toggle('bi-eye', !isPassword);
-                    icon.classList.toggle('bi-eye-slash', isPassword);
+                icon.addEventListener('click', function (e) {
+                    e.stopImmediatePropagation(); // Предотвращает двойной клик из сторонних скриптов
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('bi-eye');
+                        icon.classList.add('bi-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('bi-eye-slash');
+                        icon.classList.add('bi-eye');
+                    }
                 });
             }
         }
 
-        setupTogglePassword('togglePassword', 'passwordInput');
-        setupTogglePassword('toggleConfirmPassword', 'passwordConfirmInput');
+        bindToggle('togglePassword', 'passwordInput');
+        bindToggle('toggleConfirmPassword', 'passwordConfirmInput');
 
         var loginModalEl = document.getElementById('loginModal');
         if (loginModalEl) {
@@ -177,6 +179,7 @@
         }
     });
 </script>
+
 @guest
 @if(session('openLoginModal') || request()->has('openLogin') || $errors->any())
 <script>

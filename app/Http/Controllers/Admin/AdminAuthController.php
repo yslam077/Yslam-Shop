@@ -17,9 +17,8 @@ class AdminAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->is_admin) {
-                $request->session()->put('is_admin_logged_in', true);
                 $request->session()->regenerate();
-
+                $request->session()->put('is_admin_logged_in', true);
                 return redirect()->route('admin.dashboard')->with('success', 'Hoş geldiňiz, Admin!');
             }
 

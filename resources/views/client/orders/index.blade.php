@@ -43,18 +43,16 @@
                         </span>
                     </div>
                     <div>
-                        @if($order->status == 'pending')
-                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-semibold">
+                        @if($order->status == 'on_the_way')
+                        <span class="badge bg-warning text-white px-3 py-2 rounded-pill fw-semibold">
                             <i class="bi bi-hourglass-split me-1"></i> Garaşylýar (Pending)
                         </span>
-                        @elseif($order->status == 'completed')
-                        <span class="badge bg-success px-3 py-2 rounded-pill fw-semibold">
+                        @elseif($order->status == 'delivered')
+                        <span class="badge bg-success px-3 py-2 text-white rounded-pill fw-semibold">
                             <i class="bi bi-check-lg me-1"></i> Kabul edildi
                         </span>
-                        @else
-                        <span class="badge bg-secondary px-3 py-2 rounded-pill fw-semibold">
-                            {{ $order->status }}
-                        </span>
+                        @elseif($order->status=='canceled')
+                        <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-semibold">KAbul edilmedi</span>
                         @endif
                     </div>
                 </div>
