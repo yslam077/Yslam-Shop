@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Yslam Shop')</title>
-    
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('icons/bootstrap-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="shortcut icon" href="{{ asset('iconimg/yslam_shop.webp') }}" type="image/x-icon">
-    
+
     <style>
         .text {
             color: black;
@@ -43,11 +43,35 @@
             border-radius: 2px;
         }
 
-        .custom-tab.active.tab-red { color: #dc3545 !important; }
-        .custom-tab.active.tab-red::after { background-color: #dc3545; }
+        .custom-tab.active.tab-red {
+            color: #dc3545 !important;
+        }
 
-        .custom-tab.active.tab-green { color: #00cd00 !important; }
-        .custom-tab.active.tab-green::after { background-color: #00cd00; }
+        .custom-tab.active.tab-red::after {
+            background-color: #dc3545;
+        }
+
+        .custom-tab.active.tab-green {
+            color: #00cd00 !important;
+        }
+
+        .custom-tab.active.tab-green::after {
+            background-color: #00cd00;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+        html,
+        body {
+            scrollbar-width: none;
+            
+            -ms-overflow-style: none;
+            
+        }
     </style>
 </head>
 
@@ -136,4 +160,5 @@
     </script>
     @endif
 </body>
+
 </html>

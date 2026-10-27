@@ -18,13 +18,11 @@ class OrderItem extends Model
         'price',
     ];
 
-    // Связь с заказом
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
-    // Связь с товаром
     public function product()
     {
         return $this->belongsTo(Product::class);

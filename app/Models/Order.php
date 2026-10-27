@@ -14,13 +14,10 @@ class Order extends Model
         'status',
     ];
 
-    // Связь с таблицей items (OrderItem)
     public function items()
     {
         return $this->hasMany(OrderItem::class, 'order_id');
     }
-
-    // Связь с пользователем
     public function user()
     {
         return $this->belongsTo(User::class);
